@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app, server } = require('../index');
+const { app } = require('../index');
 
 afterAll(() => {
     server.close(); // Ensure the server shuts down after tests
@@ -7,7 +7,7 @@ afterAll(() => {
 
 describe('GET /', () => {
     test('should return "Hello, CI/CD!"', async () => {
-        const response = await app.get('/');
+        const response = await request(app).get('/');
         expect(response.data).toBe('Hello, CI/CD!');
         expect(response.status).toBe(200);
     });

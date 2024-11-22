@@ -1,8 +1,8 @@
 const request = require('supertest');
-const { app, server } = require('../index');
+const { app } = require('../index');
 
 afterAll(() => {
-    server.close(); // Ensure the server shuts down after tests
+    app.close(); // Ensure the server shuts down after tests
 });
 
 describe('GET /greet', () => {
