@@ -1,23 +1,16 @@
 const request = require('supertest');
-const { app } = require('../index');
-
-afterAll(() => {
-    app.close(); // Ensure the server shuts down after tests
-});
+const app = require('../app'); // Import the app (server runs from testSetup)
 
 describe('GET /greet', () => {
     test('should return 400 Bad Request if name is missing', async () => {
-        try {
-            await request(app).get('/greet');
-        } catch (error) {
-            expect(error.response.status).toBe(400);
-            expect(error.response.data).toEqual({ error: 'Name is required' });
-        }
+        const response = await request(app).get('/greet');
+        expect(response.status).toBe(400);
+        expect(response.text).toBe('Bad Request');
     });
 
     test('should return a greeting if name is provided', async () => {
-        const response = await request(app).get('/greet', { params: { name: 'Akram' } });
+        const response = await request(app).get('/greet?name=Akram');
         expect(response.status).toBe(200);
-        expect(response.data).toBe('Hello, Akram!');
+        expect(response.text).toBe('Hello, Akram!');
     });
 });

@@ -1,23 +1,7 @@
-const express = require('express');
-const app = express();
+const app = require('./app'); // Import the app
+const PORT = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello, CI/CD!');
-});
-
-app.get('/greet', (req, res) => {
-    const { name } = req.query;
-    if (!name) {
-        return res.status(400).json({ error: 'Name is required' });
-    }
-    res.send(`Hello, ${name}!`);
-});
-
-
-const PORT = process.env.PORT || 3000;
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-
-module.exports = { app };

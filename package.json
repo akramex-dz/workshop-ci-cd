@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon index.js"
+  },
+  "jest": {
+    "setupFilesAfterEnv": ["./testSetup.js"]
   },
   "keywords": [],
   "author": "",

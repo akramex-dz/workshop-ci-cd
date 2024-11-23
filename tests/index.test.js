@@ -1,15 +1,10 @@
 const request = require('supertest');
-const { app } = require('../index');
-
-afterAll(() => {
-    server.close(); // Ensure the server shuts down after tests
-});
+const app = require('../app'); // Import the app (server runs from testSetup)
 
 describe('GET /', () => {
     test('should return "Hello, CI/CD!"', async () => {
         const response = await request(app).get('/');
-        expect(response.data).toBe('Hello, CI/CD!');
+        expect(response.text).toBe('Hello, CI/CD!');
         expect(response.status).toBe(200);
     });
 });
-
