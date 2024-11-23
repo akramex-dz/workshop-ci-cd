@@ -15,4 +15,8 @@ app.get('/greet', (req, res) => {
     res.send(`Hello, ${name}!`);
 });
 
+app.get('/haihai', (req, res) => {
+    res.send('captain!');
+});
+
 module.exports = app;
