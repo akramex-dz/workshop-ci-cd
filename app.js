@@ -12,7 +12,7 @@ app.get('/greet', (req, res) => {
     if (!name) {
         return res.status(400).send('Bad Request');
     }
-    res.send(`Hello, ${name}!`);
+    res.send(`Hello, ++${name}!`);
 });
 
 module.exports = app;
