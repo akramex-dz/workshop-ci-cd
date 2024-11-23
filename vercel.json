@@ -9,8 +9,8 @@
     "routes": [
         {
           "src": "/(.*)",
-          "dest": "/app.js"  // Default route to your main app.js file
+          "dest": "/app.js" 
         }
-      ]
-  }
+    ]
+}
   
