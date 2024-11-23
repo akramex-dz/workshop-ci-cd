@@ -28,7 +28,7 @@ jobs:
       with:
         name: test-results
         path: test-results/ # Replace with your test results folder if applicable
-        
+
   deploy-to-vercel:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -40,11 +40,8 @@ jobs:
       uses: actions/checkout@v3
 
     # Set up Vercel CLI
-    - name: Set up Vercel CLI
-      run: |
-        curl -fsSL https://vercel.com/download -o vercel-cli.tar.gz
-        tar -xvzf vercel-cli.tar.gz
-        sudo mv vercel /usr/local/bin
+    - name: Install Vercel CLI
+      run: npm install -g vercel
 
     # Authenticate with Vercel using GitHub token (needs to be set as secret)
     - name: Authenticate Vercel CLI
