@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -14,6 +13,10 @@ app.get('/greet', (req, res) => {
         return res.status(400).send('Bad Request');
     }
     res.send(`Hello, ${name}!`);
+});
+
+app.get('/haihai', (req, res) => {
+    res.send('captain ole ola!');
 });
 
 module.exports = app;
